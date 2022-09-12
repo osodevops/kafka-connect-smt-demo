@@ -31,4 +31,6 @@ curl -X PUT \
 # test the output
 docker exec connect kafka-console-consumer -bootstrap-server broker:9092 --topic filestream --from-beginning --max-messages 10
 
+# shut the beast down
+docker-compose down -v
 ```
