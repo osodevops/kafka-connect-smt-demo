@@ -2,6 +2,14 @@
 
 
 ```shell
+
+# build the transformer code
+mvn clean install
+
+# fire up to the Confluent stack
+docker-compose up
+
+# start up the connector
 curl -X PUT \
      -H "Content-Type: application/json" \
      --data '{
@@ -19,5 +27,8 @@ curl -X PUT \
                "transforms.hello.type": "com.oso.kafka.connect.smt.HelloTransformation"
           }' \
      http://localhost:8083/connectors/filestream-source/config | jq .
+
+# test the output
+docker exec connect kafka-console-consumer -bootstrap-server broker:9092 --topic filestream --from-beginning --max-messages 10
 
 ```

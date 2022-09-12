@@ -93,9 +93,3 @@ services:
       - zookeeper
       - broker
       - schema-registry
-    command:
-      - bash
-      - -c
-      - |
-        confluent-hub install --no-prompt mongodb/kafka-connect-mongodb:1.7.0
-        /etc/confluent/docker/run
